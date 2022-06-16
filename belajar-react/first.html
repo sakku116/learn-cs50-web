@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Belajar Menggunakan React.js</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    </head>
+    <body>
+        <!-- main -->
+        <div id="mainApp"></div>
+
+        <script type="text/babel">
+            function Hello(props) {
+                return(
+                    <h1>Hello, { props.name }!</h1>
+                );
+            };
+
+            function App() {
+                const say_hello = "Hello, World!"
+                return (
+                    <div>
+                        <Hello name="Harry"/>
+                        <Hello name="Hermonie"/>
+                        <Hello name="Ron"/>
+                    </div>
+                );
+            }
+            ReactDOM.createRoot(document.querySelector("#mainApp")).render(<App />)
+        </script>
+    </body>
+</html>

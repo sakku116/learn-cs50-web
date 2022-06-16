@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animation</title>
+        <style>
+
+            @keyframes myAnimation {
+                from {
+                    left: 0%
+                }
+                to {
+                    left: 25%
+                }
+            }
+
+            .animateClass {
+                position: relative;
+                animation-name: myAnimation;
+                animation-duration: 1s;
+            }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                document.querySelector("button").onclick = animate;
+            });
+            
+            function animate() {
+                document.querySelector("h1").classList.toggle('animateClass');
+                // toggle itu seperti .add kemudian .remove tetapi otomatis
+            };
+
+        </script>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <button>click to toggle the animate</button>
+    </body>
+</html>

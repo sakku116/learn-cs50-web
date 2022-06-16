@@ -1,0 +1,13 @@
+{% extends "mytasks/base.html" %}
+
+{% block body %}
+<h1>Add Task</h1>
+<form action="{% url 'mytasks:index' %}" method='post'> <!-- (lakukan request POST ke index) -->
+    {% csrf_token %}
+    <input type="text" name="task_form">
+    <input type="submit">
+</form>
+<a href="{% url 'mytasks:index' %}">view the tasks</a>
+<!-- atau bisa menggunakan cara regular tetapi
+./ (atau bisa menggunakan "/nama_app/path") menunjukkan root path dari app-->
+{% endblock %}

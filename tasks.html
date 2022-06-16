@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MyTasks</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                
+                // pengkondisian submit button jika input value kosong
+                document.querySelector("#submit_button").disabled = true;
+                document.querySelector("#task").onkeyup = () => {
+                    document.querySelector("#submit_button").disabled = false;
+                };
+                
+                // menyimpan nilai form saat di submit
+                document.querySelector('form').onsubmit = () => {
+                    const task = document.querySelector("#task").value;
+                    
+                    if (task !== "") {
+                        const li_element = document.createElement("li");
+                        li_element.innerHTML = task;
+                        
+                        // tambahkan item list ke "ul" "#tasks"
+                        document.querySelector('#tasks').append(li_element);
+                        
+                        document.querySelector("#task").value = "";                    
+                    };
+                    
+                    // reset submit button state
+                    document.querySelector("#submit_button").disabled = true;
+                    
+                    return false;
+                    /* untuk beberapa alasan dibutuhkan return false */
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Tasks</h1>
+        <ul id="tasks">
+            <!-- list items -->
+        </ul>
+        <form>
+            <input id="task" placholder="New Task" type="text">
+            <input id="submit_button" type="submit">
+        </form>
+    </body>
+</html>

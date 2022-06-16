@@ -1,0 +1,21 @@
+{% extends "mytasks/base.html" %}
+
+{% block body %}
+<style>
+    ul {
+        font-family: calibri;
+        font-size: 50px;
+    }
+</style>
+    <ul>
+        <!-- looping dalam html melalui django -->
+        {% for task in tasks %}
+        <li>{{task}}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'mytasks:addtask' %}">add new task</a>
+    <!--"mytasks" menunjukkan 'app_name' yang dideclare pada urls.py 
+    dan "add" adalah nama dari path yang sudah didefine pada urlpattern.
+    bisa saja tanpa menggunakan 'mytasks:' (langsung 'add') tetapi akan
+    menimbulkan konflik jika app lain mempunyai nama path yang sama-->
+{% endblock %}

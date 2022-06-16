@@ -1,0 +1,25 @@
+<!-- include file css -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>isnewyear</title>
+        <!-- folder dimulai dari 'static' baru diikuti folder dengan nama app -->
+        <link href="{% static 'isnewyear/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            {% if isnewyear %}
+                <h1>Yes</h1>
+            {% else %}
+                <h1>No</h1>
+                <h2>its {{date}}. its not a newyear</h2>
+            {% endif %}
+            <!-- django juga memungkinkan untuk menulis beberapa syntax python dalam html 
+                'endif' digunakan untuk pemberhentian kondisi karena html tidak menggunakan
+                indentasi untuk codeblock melainkan tag.
+            -->
+        </div>
+    </body>
+</html>

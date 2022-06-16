@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Colors</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // via button
+                document.querySelectorAll(".color_button").forEach((button) => {
+                    button.onclick = function() {
+                        document.querySelector("#hello").style.color = button.dataset.color;
+                    };
+                });
+
+                // via selector
+                document.querySelector('#selector').onchange = function() {
+                    document.querySelector("#hello").style.color = this.value;
+                };
+            });
+        </script>
+        <style>
+            body {
+                margin-left: 100px;
+                margin-top: 100px;
+            }
+            #selector {
+                margin-top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="hello" style="font-family: calibri; font-size: 50px;">Hello</h1>
+        <button class="color_button" data-color="red">red</button>
+        <button class="color_button" data-color="green">green</button>
+        <button class="color_button" data-color="blue">blue</button>
+        <br>
+        <select id="selector">
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">blue</option>
+        </select>   
+    </body>
+</html>
