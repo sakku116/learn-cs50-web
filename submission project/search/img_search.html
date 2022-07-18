@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Search</title>
+    <title>Image Search</title>
     <style>
       body {
         font-family: 'Open Sans';
@@ -23,10 +23,18 @@
         margin-right: auto;
         margin-top: 120px;
       }
+      .title_container {
+        position: relative;
+      }
       h1 {
         text-align: center;
         font-size: 5rem;
         margin-bottom: 19px;
+      }
+      .secondary_title {
+        position: absolute;
+        right: 75px;
+        top: 70px;
       }
       form {
         position: relative;
@@ -101,7 +109,7 @@
     <script>
       function modifyQuery() {
         const form = document.querySelector('form')
-        const form_action_value = "https://google.com/search"
+        const form_action_value = "https://google.com/images"
         const search_input_value = document.querySelector('.search_input').value;
 
         form.setAttribute('action', `${form_action_value}?q=${search_input_value}`)
@@ -111,21 +119,20 @@
 
   <body>
     <div class="link_container">
-      <a href="./img_search.html">Image Search</a>
+      <a href="./index.html">Search</a>
       <a href="./advncd_search.html">Advanced Search</a>
     </div>
     <div class="main_container">
-      <h1>Google</h1>
+      <div class="title_container">
+        <h1>Google</h1>
+        <p class="secondary_title">Images</p>
+      </div>
       <form action="https://google.com/search">
         <input class="search_input hover" type="text" name="q" onkeyup="modifyQuery()">
         <img class="left_search_icon" src="search-icon.png">
         <button class="side_search_button" type="submit">
           <img class="icon" src="search-icon.png">
         </button>
-        <div class="buttons_container">
-          <input class="submit_button hover" type="submit" value="Google Search">
-          <input class="submit_button hover" value="I'm Feeling Lucky" aria-label="I'm Feeling Lucky" id="lucky" name="btnI" type="submit" data-ved="0ahUKEwiNm6S0jYLrAhXslnIEHYv2B30QnRsIDg">
-        </div>
       </form>
   </div>
   </body>
