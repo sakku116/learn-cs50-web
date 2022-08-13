@@ -22,11 +22,107 @@
         font-size: 1.5rem;
         color: red;
       }
+      .form-wrapper {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 50px;
+        min-height: 100px;
+        box-sizing: border-box;
+        padding: 0 35px;
+        gap: 10px;
+        font-size: .9rem;
+      }
+      .section1 {
+        width: 600px;
+      }
+      .section2 {
+        700px;
+      }
+      .form-container {
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .form-texts {
+        display: flex;
+        row-gap: 2px;
+        font-size: .8rem;
+        flex-direction: column;
+      }
+      .form-texts p {
+        margin-top: 13px;
+      }
+      .form-texts p:first-child {
+        margin-top: 9px
+      }
+      form {
+        width: 70%;
+        height: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        display: flex;
+        gap: 15px;
+      }
+      input {
+        height: 25px;
+      }
+      .range-input {
+        display: flex;
+        justify-content: space-between;
+      }
+      .range-input input {
+        width: 40%
+      }
+      .submit-button {
+        height: 30px;
+        width: 42.75%;
+        align-self: flex-end;
+      }
+      .section-title {
+        font-size: 1rem;
+      }
     </style>
   </head>
   <body>
     <div class="google-text">Google</div>
     <h1>Advanced Search</h1>
     <hr>
+    <div class="form-wrapper">
+      <div class="section1">
+        <p class="section-title">Find pages with...</p>
+        <div class="form-container">
+          <div class="form-texts">
+            <p>all there words:</p>
+            <p>this exact word or phrase:</p>
+            <p>any of these words:</p>
+            <p>none of these words:</p>
+            <p>numbers ranging form:</p>
+          </div>
+          <form action="https://google.com/search">
+            <input type="text" name='as_q'>
+            <input type="text" name='as_epq'>
+            <input type="text" name='as_oq'>
+            <input type="text" name='as_eq'>
+            <div class="range-input" style="width: 100%">
+              <input type="text" name='as_nlo'>
+              <p>to</p>
+              <input type="text" name='as_nhi'>
+            </div>
+            <button class="submit-button" type='submit'>Advanced Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="section2">
+        <p class="section-title">To do this in the search box.</p>
+        <div class="form-texts">
+          <p>Type the important words: tri-colour rat terrier</p>
+          <p>Put exact words in quotes: "rat terrier"</p>
+          <p>Type OR between all the words you want: miniature OR standard</p>
+          <p>Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</p>
+          <p>Put two full stops between the numbers and add a unit of measurement: 10..35 kg, £300..£500, 2010..2011</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
