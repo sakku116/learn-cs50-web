@@ -1,0 +1,13 @@
+{% extends "encyclopedia/entry_page_layout.html" %}
+
+{% block title %}
+  {% if entry_title %}
+    wiki - {{ entry_title }}
+  {% else %}
+    wiki - untitled
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+  {{ entry_content|safe }}
+{% endblock %}
