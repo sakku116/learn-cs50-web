@@ -11,12 +11,20 @@ def index(request):
     query = request.GET.get('q', None)
 
     if query:
-        header = "Page Result"
+        entry_results = []
+
+        for entry in entries:
+            if query.lower() in entry.lower():
+                entry_results.append(entry)
+            else:
+                pass
+
+        header = f"Entry Result: '{query}' ({len(entry_results)})"
     else:
-        pass
+        entry_results = entries
 
     return render(request, "encyclopedia/index.html", {
-        "entries": entries,
+        "entries": entry_results,
         "header": header
     })
 
