@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import markdown2
 from django.http import HttpResponseRedirect
+import random
 
 from . import util
 
@@ -87,3 +88,38 @@ def createNewPage(request):
             util.save_entry(page_title, page_content)
             return HttpResponseRedirect(f'/wiki/{page_title}')
 
+def editPage(request, entry_name):
+    if request.method == "GET":
+        page_title = entry_name
+        raw_entry = ""
+
+        entries = util.list_entries()
+        for entry in entries:
+            if page_title.lower() == entry.lower():
+                page_title = entry
+
+        raw_entry_content = util.get_entry(entry_name)
+
+        if raw_entry_content: # if entry is found
+            return render(
+                request,
+                "encyclopedia/edit_page.html",
+                {
+                    'page_title': page_title,
+                    'raw_entry_content': raw_entry_content
+                }
+            )
+        else:
+            return render(request, "encyclopedia/not_found.html")
+
+    elif request.method == "POST":
+        entry_content = request.POST.get("entry_content", None)
+        util.save_entry(entry_name, entry_content)
+
+        return HttpResponseRedirect(f"/wiki/{entry_name}")
+
+def randomWiki(request):
+    entries = util.list_entries()
+    random_entry_title = entries[random.randint(0, len(entries)-1)]
+
+    return HttpResponseRedirect(f'/wiki/{random_entry_title}/')

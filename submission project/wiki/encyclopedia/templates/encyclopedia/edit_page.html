@@ -1,0 +1,28 @@
+{% extends "encyclopedia/entry_page_layout.html" %}
+
+{% block title %}
+  Edit - {{ page_title }}
+{% endblock %}
+
+{% block body %}
+  <style>
+    body {
+      overflow: hidden;
+    }
+    .edit-form {
+    }
+    textarea {
+      width: 700px;
+      height: 300px;  
+    }
+  </style>
+
+  <h1>Edit "{{page_title}}" Page</h1>
+  <form class="edit-form" action="/wiki/{{ page_title }}/edit/" method="POST">
+    {% csrf_token %}
+    <textarea name="entry_content">{{ raw_entry_content }}</textarea>
+    <br>
+    <button type="submit">Edit</button>
+  </form>
+  {{ entry_content|safe }}
+{% endblock %}
