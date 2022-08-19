@@ -1,0 +1,38 @@
+{% extends "encyclopedia/entry_page_layout.html" %}
+
+{% block title %}
+  Create New Page
+{% endblock %}
+
+{% block body %}
+  <style>
+    body {
+      overflow: hidden;
+    }
+    .create_new_form {
+      margin-top: 30px;
+    }
+    textarea {
+      width: 100%;
+      max-width: 600px;
+
+      height: 200px;
+    }
+  </style>
+
+  <h1>Create New Page</h1>
+  <form class="create_new_form" action="{% url 'create-new' %}" method="POST">
+    {% csrf_token %}
+    <label for="page_title_field">Title:</label> <br>
+    <input id="page_title_field" type="text" name="page_title">
+    <br>
+    <label for="page_content_field">Content:</label> <br>
+    <textarea id="page_content_field" name="page_content"></textarea>
+    <br>
+    <button type="submit">Create</button>
+  </form>
+  <div class="output">
+    <p>Message:</p>
+    {{ output_meesage }}
+  </div>
+{% endblock %}

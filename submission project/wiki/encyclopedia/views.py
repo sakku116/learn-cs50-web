@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import markdown2
+from django.http import HttpResponseRedirect
 
 from . import util
 
@@ -49,4 +50,40 @@ def entryPage(request, entry_name):
             "entry_content": entry_content
         }
     )
+
+def createNewPage(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "encyclopedia/create_new_page.html"
+        )
+
+    elif request.method == "POST":
+        page_title = request.POST.get('page_title', None)
+        page_content = request.POST.get('page_content', None)
+        output_message = None
+
+        if page_title == "":
+            page_title = "untitled"
+
+        is_exist = False
+
+        # check whether entry title is exist
+        get_entries = util.list_entries()
+        for entry in get_entries:
+            if page_title.lower() == entry.lower():
+                is_exist = True
+
+        if is_exist:
+            output_message = f"The entry called '{page_title}' is already exist. Try creating new page using other title"
+            return render(
+                request,
+                "encyclopedia/create_new_page.html",
+                {
+                    "output_meesage": output_message,
+                }
+            )
+        else:
+            util.save_entry(page_title, page_content)
+            return HttpResponseRedirect(f'/wiki/{page_title}')
 
