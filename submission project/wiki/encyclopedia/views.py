@@ -16,7 +16,9 @@ def index(request):
         entry_results = []
 
         for entry in entries:
-            if query.lower() in entry.lower():
+            if query.lower() == entry.lower(): # match
+                return HttpResponseRedirect(f'/wiki/{query}/')
+            elif query.lower() in entry.lower(): # not match but contain substring
                 entry_results.append(entry)
             else:
                 pass
